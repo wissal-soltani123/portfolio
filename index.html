@@ -2,11 +2,15 @@
 <html lang="en">
 
 <head>
+    <!-- précharger les ressources critiques -->
+     <link rel="preload" href="wissal.jpeg" as="image">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <!-- ================= SEO BASICS ================= -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Wissal Soltani | Business Intelligence & Data Analytics Specialist</title>
+    <title>Wissal Soltani — BI & Data Analytics | ISET Rades</title>
 
     <meta name="description"
         content="Wissal Soltani - Business Intelligence Master's Student & Full-Stack Developer. Expert in Data Warehousing, ETL, Power BI, Python ML, and modern web development. Tunisia-based.">
@@ -19,7 +23,10 @@
     <meta name="robots" content="index, follow">
 
     <!-- ================= CANONICAL ================= -->
-    <link rel="canonical" href="https://wissal-soltani123.github.io/portfolio">
+    <link rel="canonical" href="https://wissal-soltani123.github.io/portfolio/">
+    <!-- ================= LANGUAGE ================= -->
+
+    <link rel="alternate" hreflang="en" href="https://wissal-soltani123.github.io/portfolio/">
 
     <!-- ================= FAVICON ================= -->
     <!--link rel="icon" href="favicon.ico" type="image/x-icon"-->
@@ -30,14 +37,21 @@
     <meta property="og:description"
         content="Business Intelligence Master's Student & Full-Stack Developer. Data Warehousing, ETL, ML, Power BI projects.">
     <meta property="og:image" content="https://wissal-soltani123.github.io/portfolio/preview.png">
-    <meta property="og:url" content="https://wissal-soltani123.github.io/portfolio">
+    <meta property="og:url" content="https://wissal-soltani123.github.io/portfolio/">
     <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Wissal Soltani Portfolio">
 
     <!-- ================= TWITTER ================= -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Wissal Soltani - BI & Data Analytics Portfolio">
     <meta name="twitter:description" content="BI Master's Student | Data Engineer | ML | Power BI | Web Dev">
     <meta name="twitter:image" content="https://wissal-soltani123.github.io/portfolio/preview.png">
+    <meta name="twitter:creator" content="@votre_pseudo">
+    <meta name="twitter:site" content="@votre_pseudo"> 
+
+    <!-- ================= Google Search Console ================= -->
+    <meta name="google-site-verification" content="7VhA5FLpeJk1DQRXm8U5HWQmvQf5fSmTnWQyw-ZhVb8" />
 
     <!-- ================= SCHEMA.ORG ================= -->
     <script type="application/ld+json">
@@ -1277,7 +1291,7 @@
     <section class="hero">
         <div class="hero-content">
             <div class="profile-photo">
-                <img src="wissal.jpeg" alt="Wissal Soltani - Business Intelligence Specialist" loading="lazy">
+                <img src="wissal.jpeg" alt="Wissal Soltani - Spécialiste BI et Data Analytics, Master ISET Rades" loading="lazy">
                 <span class="photo-badge"><i class="fas fa-check"></i> Open to Work</span>
             </div>
 
@@ -1883,6 +1897,25 @@
                 }
             });
         });
+        // Tracker le clic sur "Download CV"
+document.querySelectorAll('a[href="cv_wissal_master.pdf"]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    gtag('event', 'cv_download', {
+      event_category: 'engagement',
+      event_label: 'CV PDF Download'
+    });
+  });
+});
+
+// Tracker les clics GitHub/LinkedIn
+document.querySelectorAll('a[href*="github"], a[href*="linkedin"]').forEach(link => {
+  link.addEventListener('click', () => {
+    gtag('event', 'social_click', {
+      event_category: 'engagement',
+      event_label: link.href
+    });
+  });
+});
     </script>
 
 </body>
