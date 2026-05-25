@@ -102,6 +102,49 @@
             --success: #10b981;
             --warning: #f59e0b;
             --purple: #a855f7;
+            --header-bg: rgba(15, 23, 42, 0.95);
+            --shadow-color: rgba(0, 0, 0, 0.3);
+        }
+
+        :root.light-mode {
+            --bg-color: #f0f4f8;
+            --card-bg: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --accent-primary: #2563eb;
+            --accent-secondary: #7c3aed;
+            --accent-bi: #059669;
+            --gradient: linear-gradient(135deg, #2563eb 0%, #7c3aed 50%, #059669 100%);
+            --border-color: #cbd5e1;
+            --transition: all 0.3s ease;
+            --success: #059669;
+            --warning: #d97706;
+            --purple: #9333ea;
+            --header-bg: rgba(240, 244, 248, 0.95);
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- Theme Toggle Button --- */
+        .theme-toggle {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent-bi);
+            color: var(--accent-bi);
+            transform: rotate(20deg) scale(1.1);
         }
 
         * {
@@ -143,7 +186,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background-color: rgba(15, 23, 42, 0.95);
+            background-color: var(--header-bg);
             backdrop-filter: blur(10px);
             z-index: 1000;
             border-bottom: 1px solid var(--border-color);
@@ -1266,6 +1309,9 @@
                 <a href="#contact" class="nav-btn">
                     <i class="fas fa-paper-plane"></i> Hire Me
                 </a>
+                <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle" title="Toggle light/dark mode">
+                    <i class="fas fa-sun"></i>
+                </button>
                 <button class="mobile-menu-btn" onclick="toggleMobileNav()">
                     <i class="fas fa-bars"></i>
                 </button>
@@ -1377,7 +1423,7 @@
                         <span class="skill-item bi">DAX/MDX</span>
                         <span class="skill-item bi">SQL (Advanced)</span>
                         <span class="skill-item bi">Redshift</span>
-                        <span class="skill-item bi">CDC</span>
+                        
                         
                     </div>
                 </div>
@@ -1517,7 +1563,7 @@
                             <span class="tech-badge">PostgreSQL</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/wissal-soltani123/weather-analysis" target="_blank" class="project-link github">
+                            <a href="https://github.com/wissal-soltani123/ETL-Analysis" target="_blank" class="project-link github">
                                 <i class="fab fa-github"></i> Code
                             </a>
                         </div>
@@ -1545,7 +1591,7 @@
                            
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/wissal-soltani123/movielens-dwh" target="_blank" class="project-link github">
+                            <a href="https://github.com/wissal-soltani123/MovieLens-Analysis" target="_blank" class="project-link github">
                                 <i class="fab fa-github"></i> Code
                             </a>
                         </div>
@@ -1573,7 +1619,7 @@
                             <span class="tech-badge">Streamlit</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/wissal-soltani123/house-pricing-ml" target="_blank" class="project-link github">
+                            <a href="https://github.com/wissal-soltani123/House-Pricing-ML" target="_blank" class="project-link github">
                                 <i class="fab fa-github"></i> Code
                             </a>
                            
@@ -1662,16 +1708,7 @@
                     </div>
                 </div>
 
-                <div class="cert-card">
-                    <div class="cert-icon">
-                        <i class="fas fa-cloud"></i>
-                    </div>
-                    <div class="cert-content">
-                        <h3>Microsoft Fabric & Lakehouse</h3>
-                        <span class="cert-issuer">Microsoft Learn · Completed Courses</span>
-                        <p class="cert-desc">Data warehousing, lakehouse architecture, real-time analytics with Microsoft Fabric</p>
-                    </div>
-                </div>
+        
 
             </div>
         </div>
@@ -1776,10 +1813,10 @@
             </p>
 
             <div class="contact-info">
-                <a href="mailto:wissalsol007@gmail.com" class="contact-item">
+                <a href="mailto:soltani.wissal100@gmail.com" class="contact-item">
                     <div class="contact-icon"><i class="fas fa-envelope"></i></div>
                     <span class="contact-label">Email</span>
-                    <span class="contact-value">wissalsol007@gmail.com</span>
+                    <span class="contact-value">soltani.wissal100@gmail.com</span>
                 </a>
 
                 <a href="https://github.com/wissal-soltani123" target="_blank" class="contact-item">
@@ -1804,7 +1841,7 @@
             <div class="cv-download">
                 <h3><i class="fas fa-file-download" style="color: var(--accent-bi);"></i> Download My CV</h3>
                 <p>Detailed portfolio of BI projects, ML models, data engineering solutions, and development experience</p>
-                <a href="cv_wissal_master.pdf" download class="btn-primary">
+                <a href="CV_WissalSoltani_DataAnalyst.pdf" download class="btn-primary">
                     <i class="fas fa-download"></i> Download CV (PDF)
                 </a>
             </div>
@@ -1830,6 +1867,28 @@
             mobileNav.classList.toggle('active');
         }
 
+        // Light / Dark Mode Toggle
+        function toggleTheme() {
+            const root = document.documentElement;
+            const btn = document.getElementById('themeToggle');
+            const icon = btn.querySelector('i');
+            const isLight = root.classList.toggle('light-mode');
+            icon.className = isLight ? 'fas fa-moon' : 'fas fa-sun';
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        }
+
+        // Apply saved theme on load
+        (function() {
+            const saved = localStorage.getItem('theme');
+            if (saved === 'light') {
+                document.documentElement.classList.add('light-mode');
+                window.addEventListener('DOMContentLoaded', () => {
+                    const icon = document.querySelector('#themeToggle i');
+                    if (icon) icon.className = 'fas fa-moon';
+                });
+            }
+        })();
+
         // Smooth Scroll for Navigation Links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1849,7 +1908,7 @@
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             if (window.scrollY > 50) {
-                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
+                header.style.boxShadow = '0 4px 20px var(--shadow-color)';
             } else {
                 header.style.boxShadow = 'none';
             }
